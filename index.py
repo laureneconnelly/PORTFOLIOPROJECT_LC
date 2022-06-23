@@ -15,3 +15,17 @@ def song():
     cur.execute("SELECT * FROM songs")
     records = cur.fetchall()
     return render_template("musicfydesign.html", records=records)
+
+@app.route("/artist")
+def artist():
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM artists")
+    records = cur.fetchall()
+    return render_template("musicfydesign.html", records=records)
+
+@app.route("/album")
+def album():
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM albums")
+    records = cur.fetchall()
+    return render_template("musicfydesign.html", records=records)
