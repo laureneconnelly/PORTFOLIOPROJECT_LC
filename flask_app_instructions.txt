@@ -1,0 +1,55 @@
+1. Download the pgAdmin app on your desktop. If you already have, skip to the next step.
+2. Make sure there are no other docker containers running.
+3. In any Bash terminal, type and run this command:
+	
+	docker run --name postgres -e POSTGRES_PASSWORD=admin123 -p 5432:5432 postgres
+
+4. Open the pgAdmin app on your desktop.
+5. Create a new server and name it any name you want.
+6. Go to the Connection tab and input the following:
+
+	Host: localhost
+	Port: 5432
+	Databse: postgres
+	Username: postgres
+	Password: admin123
+
+Click SAVE.
+	
+7. Create a folder for your project.
+8. Open VS Code in that folder and activate the virtual environment with this command:
+	
+	python -m venv venv
+
+This should have created a folder named "venv". Now activate with this command:
+	
+	. venv/Scripts/activate
+
+9. Install flask and psycopg2-binary with this command:
+	
+	pip install flask psycopg2-binary
+
+10. Inside your project folder, create a file named "index.py" and input these codes:
+
+	from flask import Flask, render_template
+	import psycopg2
+
+	app = Flask(__name__)
+
+	@app.route('/')
+	def index():
+    		return "<h>Hello, World!</h>"
+
+11. Open the terminal and make sure you are inside your project folder.
+12. Type this command:
+
+	export FLASK_APP=index
+
+Hit Enter.
+
+	flask run
+
+Hit Enter.
+
+13. Go to the link shown at the bottom of the terminal. It should be http://127.0.0.1:5000/
+14. Now you have created a web app with flask.
