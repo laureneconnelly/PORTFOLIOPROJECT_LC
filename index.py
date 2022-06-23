@@ -9,8 +9,8 @@ conn = psycopg2.connect("dbname=postgres user=postgres password=admin123 host=lo
 def index():
     return "<h>Hello, World!</h>"
 
-@app.route("/songs")
-def songs():
+@app.route("/song")
+def song():
     cur = conn.cursor()
     cur.execute("SELECT * FROM songs")
     records = cur.fetchall()
